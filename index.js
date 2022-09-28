@@ -5,6 +5,8 @@ var porta = 4000;
 
 var {campus} = require('./models');
 var {curso} = require('./models');
+var {matricula} = require('./models')
+
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
@@ -71,6 +73,34 @@ app.delete("/curso/:id", async function(req, res){
     var apagar = await curso.destroy({where: {id:req.params.id}})
     res.json(apagar)
 })
+
+//Matricula
+
+app.get("/matricula", async function(req, res){
+    var mostrar = await matricula.findAll();
+    res.json(mostrar);
+})
+
+app.get("/matricula/:id", async function(req, res){
+    var mostrar = await matricula.findByPk(req.params.id);
+    res.json(mostrar)
+})
+
+app.post("/matricula", async function(req, res){
+    var adicionar = await matricula.create(req.body);
+    res.json(adicionar);
+})
+
+app.put("/matricula/:id", async function(req, res){
+    var atualizar = await matricula.update(req.body, {where: {id:req.params.id}});
+    res.json(atualizar);
+})
+
+app.delete("/matricula/:id", async function(req, res){
+    var apagar = await matricula.destroy({where: {id:req.params.id}});
+    res.json(apagar);
+})
+
 
 app.listen(porta, function(){
     console.log("O servidor está rodando na porta http://localhost:" + porta)
