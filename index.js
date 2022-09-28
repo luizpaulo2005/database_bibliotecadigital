@@ -6,8 +6,9 @@ var porta = 4000;
 var {campus} = require('./models');
 var {curso} = require('./models');
 var {matricula} = require('./models');
-var {discente} = require('./models')
-
+var {discente} = require('./models');
+var {docente} = require('./models');
+var {pesquisa} = require('./models');
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
@@ -128,6 +129,62 @@ app.delete("/discente/:id", async function(req, res){
     var apagar = await discente.destroy({where: {id:req.params.id}});
     res.json(apagar);
 })
+
+//Docente
+
+app.get("/docente", async function(req, res){
+    var mostrar = await docente.findAll();
+    res.json(mostrar);
+})
+
+app.get("/docente/:id", async function(req, res){
+    var mostrar = await docente.findByPk(req.params.id);
+    res.json(mostrar);
+})
+
+app.post("/docente", async function(req, res){
+    var adicionar = await docente.create(req.body);
+    res.json(adicionar);
+})
+
+app.put("/docente/:id", async function(req, res){
+    var atualizar = await docente.update(req.body, {where: {id:req.params.id}});
+    res.json(atualizar);
+})
+
+app.delete("/docente/:id", async function(req, res){
+    var apagar = await docente.destroy({where: {id:req.params.id}});
+    res.json(apagar);
+})
+
+//Pesquisa
+
+app.get("/pesquisa", async function(req, res){
+    var mostrar = await pesquisa.findAll();
+    res.json(mostrar);
+})
+
+app.get("/pesquisa/:id", async function(req, res){
+    var mostrar = await pesquisa.findByPk(req.params.id);
+    res.json(mostrar)
+})
+
+app.post("/pesquisa", async function(req, res){
+    var adicionar = await pesquisa.create(req.body);
+    res.json(adicionar);
+})
+
+app.put("/pesquisa/:id", async function(req, res){
+    var atualizar = await pesquisa.update(req.body, {where: {id:req.params.id}});
+    res.json(atualizar);
+})
+
+app.delete("/pesquisa/:id", async function(req, res){
+    var apagar = await pesquisa.destroy({where: {id:req.params.id}});
+    res.json(apagar);
+})
+
+//Listen
 
 app.listen(porta, function(){
     console.log("O servidor está rodando na porta http://localhost:" + porta)
