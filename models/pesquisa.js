@@ -18,8 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   pesquisa.init({
     titulo: DataTypes.STRING,
     tipo: DataTypes.STRING,
-    alunosId: DataTypes.INTEGER,
-    orientadorId: DataTypes.INTEGER,
+    discenteId: DataTypes.INTEGER,
+    docenteId: DataTypes.INTEGER,
     data_apresentacao: DataTypes.DATE,
     palavras_chave: DataTypes.STRING,
     resumo: DataTypes.STRING,
