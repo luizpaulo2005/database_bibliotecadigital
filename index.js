@@ -62,8 +62,13 @@ app.get("/curso/:id", async function(req, res){
 })
 
 app.post("/curso", async function(req, res){
-    var adicionar = await curso.create(req.body);
-    res.json(adicionar);
+    try {
+        var adicionar = await curso.create(req.body);
+        res.json(adicionar);
+    } catch (error) {
+        res.status(500);
+        res.json('error:' + error)
+    }
 })
 
 app.put("/curso/:id", async function(req, res){
