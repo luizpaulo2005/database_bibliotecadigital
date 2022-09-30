@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   discente.init({
     nome: DataTypes.STRING,
-    matriculaId: DataTypes.INTEGER,
+    matriculaId: DataTypes.BIGINT,
     email: DataTypes.STRING,
-    data_nascimento: DataTypes.DATE,
+    data_nascimento: DataTypes.DATEONLY,
     cpf: DataTypes.STRING
   }, {
     sequelize,

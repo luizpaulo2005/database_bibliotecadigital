@@ -24,7 +24,7 @@ module.exports = {
         references: {model: "docentes", key:"id"}
       },
       data_apresentacao: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       palavras_chave: {
         type: Sequelize.STRING

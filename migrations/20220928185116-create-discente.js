@@ -13,14 +13,14 @@ module.exports = {
         type: Sequelize.STRING
       },
       matriculaId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         references: {model: "matriculas", key: "id"}
       },
       email: {
         type: Sequelize.STRING
       },
       data_nascimento: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       cpf: {
         type: Sequelize.STRING
