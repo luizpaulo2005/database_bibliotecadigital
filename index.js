@@ -35,8 +35,13 @@ app.get("/campus/:id", async function(req, res){
 })
 
 app.post("/campus", async function(req, res){
+    try {
     var adicionar = await campus.create(req.body);
     res.json(adicionar);
+    } catch (error) {
+    res.status(500);
+    res.json("Erro: " + error) 
+    }
 })
 
 app.put("/campus/:id", async function(req, res){
@@ -67,7 +72,7 @@ app.post("/curso", async function(req, res){
         res.json(adicionar);
     } catch (error) {
         res.status(500);
-        res.json('error:' + error)
+        res.json('Erro: ' + error)
     }
 })
 
@@ -94,8 +99,13 @@ app.get("/matricula/:id", async function(req, res){
 })
 
 app.post("/matricula", async function(req, res){
+    try {
     var adicionar = await matricula.create(req.body);
     res.json(adicionar);
+    } catch (error) {
+    res.status(500);
+    res.json("Erro: " + error)    
+    }
 })
 
 app.put("/matricula/:id", async function(req, res){
@@ -121,8 +131,13 @@ app.get("/discente/:id", async function(req, res){
 })
 
 app.post("/discente", async function(req, res){
+    try {
     var adicionar = await discente.create(req.body);
     res.json(adicionar);
+    } catch (error) {
+        res.status(500);
+        res.json("Erro: " + error)
+    }
 })
 
 app.put("/discente/:id", async function(req, res){
@@ -148,8 +163,13 @@ app.get("/docente/:id", async function(req, res){
 })
 
 app.post("/docente", async function(req, res){
+    try {
     var adicionar = await docente.create(req.body);
     res.json(adicionar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.put("/docente/:id", async function(req, res){
@@ -175,8 +195,13 @@ app.get("/pesquisa/:id", async function(req, res){
 })
 
 app.post("/pesquisa", async function(req, res){
+    try {
     var adicionar = await pesquisa.create(req.body);
     res.json(adicionar);
+    } catch (error) {
+        res.status(500);
+        res.json("Erro: " + error)
+    }
 })
 
 app.put("/pesquisa/:id", async function(req, res){
