@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var cors = require('cors');
+const fileUpload = require('express-fileupload');
 var porta = 4000;
 
 var {campus} = require('./models');
@@ -13,6 +14,7 @@ var {pesquisa} = require('./models');
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
+app.use(fileUpload());
 
 app.set('view engine', 'ejs');
 
@@ -198,6 +200,13 @@ app.post("/pesquisa", async function(req, res){
     try {
     var adicionar = await pesquisa.create(req.body);
     res.json(adicionar);
+
+    const files = req.files.pesquisaFile
+    files.name = "http://localhost:4000/uploads/" + req.body.url_download + ".pdf";
+    const uploadPath = __dirname + '/uploads/' + files.name
+
+    files.mv(uploadPath)
+        
     } catch (error) {
         res.status(500);
         res.json("Erro: " + error)
