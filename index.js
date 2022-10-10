@@ -202,7 +202,7 @@ app.post("/pesquisa", async function(req, res){
     res.json(adicionar);
 
     const files = req.files.pesquisaFile
-    files.name = "http://localhost:4000/uploads/" + req.body.url_download + ".pdf";
+    files.name = req.body.url_download + ".pdf";
     const uploadPath = __dirname + '/uploads/' + files.name
 
     files.mv(uploadPath)
