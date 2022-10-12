@@ -223,6 +223,21 @@ app.delete("/pesquisa/:id", async function(req, res){
     res.json(apagar);
 })
 
+//Download Pesquisa 
+
+app.get("/pesquisa/download/:id", async function(req, res){
+    try {
+    var pegar = await pesquisa.findOne({where: {id: req.params.id}})
+    filedownload = __dirname + "/uploads/" + pegar.url_download + ".pdf"
+    res.download(filedownload)
+    res.status(200)
+    } catch (error) {
+    res.status(404)
+    res.json("ID inexistente, " + "erro: " + error)
+    }
+    
+})
+
 //Listen
 
 app.listen(porta, function(){
