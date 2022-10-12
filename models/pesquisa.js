@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     docenteId: DataTypes.INTEGER,
     data_apresentacao: DataTypes.DATEONLY,
     palavras_chave: DataTypes.STRING,
-    resumo: DataTypes.STRING(max),
+    resumo: DataTypes.STRING(1048576),
     url_download: DataTypes.STRING
   }, {
     sequelize,
