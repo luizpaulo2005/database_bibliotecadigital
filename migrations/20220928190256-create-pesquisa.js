@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       resumo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(512)
       },
       url_download: {
         type: Sequelize.STRING
