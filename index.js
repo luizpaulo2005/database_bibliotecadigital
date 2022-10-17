@@ -31,6 +31,8 @@ app.get("/campus", async function(req, res){
     res.json(mostrar);
 })
 
+// Rota de Relacionamentos
+
 app.get("/campus/:id", async function(req, res){
     try {
         var mostrar = await campus.findByPk(req.params.id);
@@ -96,6 +98,11 @@ app.get("/curso/:id", async function(req, res){
         res.status(500)
         res.json("Erro: " + error)
     }
+})
+
+app.get("/curso/:id/campus", async function(req, res){
+    var mostrar = await curso.findByPk(req.params.id, {include : 'campus'})
+    res.json(mostrar)
 })
 
 app.post("/curso", async function(req, res){
