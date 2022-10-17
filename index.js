@@ -86,7 +86,7 @@ app.delete("/campus/:id", async function(req, res){
 //Curso
 
 app.get("/curso", async function(req, res){
-    var mostrar = await curso.findAll();
+    var mostrar = await curso.findAll({include: "campus"});
     res.json(mostrar);
 })
 
