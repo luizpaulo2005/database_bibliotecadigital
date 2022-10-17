@@ -267,8 +267,13 @@ app.get("/pesquisa", async function(req, res){
 })
 
 app.get("/pesquisa/:id", async function(req, res){
-    var mostrar = await pesquisa.findByPk(req.params.id);
-    res.json(mostrar)
+    try {
+        var mostrar = await pesquisa.findByPk(req.params.id);
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.post("/pesquisa", async function(req, res){
@@ -289,13 +294,22 @@ app.post("/pesquisa", async function(req, res){
 })
 
 app.put("/pesquisa/:id", async function(req, res){
-    var atualizar = await pesquisa.update(req.body, {where: {id:req.params.id}});
-    res.json(atualizar);
+    try {
+        var atualizar = await pesquisa.update(req.body, {where: {id:req.params.id}});
+        res.json(atualizar);
+    } catch (error) {
+        res.status(500)
+    }
 })
 
 app.delete("/pesquisa/:id", async function(req, res){
-    var apagar = await pesquisa.destroy({where: {id:req.params.id}});
-    res.json(apagar);
+    try {
+        var apagar = await pesquisa.destroy({where: {id:req.params.id}});
+        res.json(apagar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 //Download Pesquisa 
