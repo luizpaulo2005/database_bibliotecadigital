@@ -170,10 +170,24 @@ app.get("/matricula/:id", async function(req, res){
 })
 
 app.get("/matricula/:id/discente", async function(req, res){
-    var mostrar = await matricula.findByPk(req.params.id, {include: "discentes"})
-    res.json(mostrar)
+    try {
+        var mostrar = await matricula.findByPk(req.params.id, {include: "discentes"})
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
+app.get("/matricula/:id/curso", async function(req, res){
+    try {
+        var mostrar = await matricula.findByPk(req.params.id, {include: "curso"})
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
+})
 
 app.post("/matricula", async function(req, res){
     try {
