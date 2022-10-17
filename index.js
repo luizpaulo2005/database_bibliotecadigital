@@ -43,7 +43,7 @@ app.get("/campus/:id", async function(req, res){
     }
 })
 
-app.get("/campus/:id/cursos", async function(req, res){
+app.get("/campus/:id/allattributes", async function(req, res){
     try {
         var mostrar = await campus.findByPk(req.params.id, {include :  'cursos'})
         res.json(mostrar)
@@ -102,19 +102,9 @@ app.get("/curso/:id", async function(req, res){
 
 // Rotas de Relacionamento
 
-app.get("/curso/:id/campus", async function(req, res){
+app.get("/curso/:id/allattributes", async function(req, res){
     try {
-        var mostrar = await curso.findByPk(req.params.id, {include : 'campus'})
-        res.json(mostrar)
-    } catch (error) {
-        res.status(500)
-        res.json("Erro: " + error)
-    }
-})
-
-app.get("/curso/:id/matriculas", async function(req, res){
-    try {
-        var mostrar = await curso.findByPk(req.params.id, {include: "matriculas"})
+        var mostrar = await curso.findByPk(req.params.id, {include : ['campus', 'matriculas']})
         res.json(mostrar)
     } catch (error) {
         res.status(500)
@@ -171,19 +161,9 @@ app.get("/matricula/:id", async function(req, res){
 
 // Rotas de Relacionamento
 
-app.get("/matricula/:id/discente", async function(req, res){
+app.get("/matricula/:id/allattributes", async function(req, res){
     try {
-        var mostrar = await matricula.findByPk(req.params.id, {include: "discentes"})
-        res.json(mostrar)
-    } catch (error) {
-        res.status(500)
-        res.json("Erro: " + error)
-    }
-})
-
-app.get("/matricula/:id/curso", async function(req, res){
-    try {
-        var mostrar = await matricula.findByPk(req.params.id, {include: "curso"})
+        var mostrar = await matricula.findByPk(req.params.id, {include: ["discentes", "curso"]})
         res.json(mostrar)
     } catch (error) {
         res.status(500)
@@ -240,19 +220,9 @@ app.get("/discente/:id", async function(req, res){
 
 // Rotas de Relacionamento
 
-app.get("/discente/:id/matricula", async function(req, res){
+app.get("/discente/:id/allattributes", async function(req, res){
     try {
-        var mostrar = await discente.findByPk(req.params.id, {include: "matricula"})
-        res.json(mostrar)
-    } catch (error) {
-        res.status(500)
-        res.json("Erro: " + error)
-    }
-})
-
-app.get("/discente/:id/pesquisas", async function(req, res){
-    try {
-        var mostrar = await discente.findByPk(req.params.id, {include: "pesquisas"})
+        var mostrar = await discente.findByPk(req.params.id, {include: ["matricula", "pesquisas"]})
         res.json(mostrar)
     } catch (error) {
         res.status(500)
