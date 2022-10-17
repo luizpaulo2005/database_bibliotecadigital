@@ -220,8 +220,13 @@ app.get("/docente", async function(req, res){
 })
 
 app.get("/docente/:id", async function(req, res){
-    var mostrar = await docente.findByPk(req.params.id);
-    res.json(mostrar);
+    try {
+        var mostrar = await docente.findByPk(req.params.id);
+        res.json(mostrar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.post("/docente", async function(req, res){
@@ -235,13 +240,23 @@ app.post("/docente", async function(req, res){
 })
 
 app.put("/docente/:id", async function(req, res){
-    var atualizar = await docente.update(req.body, {where: {id:req.params.id}});
-    res.json(atualizar);
+    try {
+        var atualizar = await docente.update(req.body, {where: {id:req.params.id}});
+        res.json(atualizar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.delete("/docente/:id", async function(req, res){
-    var apagar = await docente.destroy({where: {id:req.params.id}});
-    res.json(apagar);
+    try {
+        var apagar = await docente.destroy({where: {id:req.params.id}});
+        res.json(apagar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 //Pesquisa
