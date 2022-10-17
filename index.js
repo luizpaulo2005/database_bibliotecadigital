@@ -42,8 +42,13 @@ app.get("/campus/:id", async function(req, res){
 })
 
 app.get("/campus/:id/cursos", async function(req, res){
-    var mostrar = await campus.findByPk(req.params.id, {include :  'cursos'})
-    res.json(mostrar)
+    try {
+        var mostrar = await campus.findByPk(req.params.id, {include :  'cursos'})
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.post("/campus", async function(req, res){
