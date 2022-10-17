@@ -41,6 +41,11 @@ app.get("/campus/:id", async function(req, res){
     }
 })
 
+app.get("/campus/:id/cursos", async function(req, res){
+    var mostrar = await campus.findByPk(req.params.id, {include :  'cursos'})
+    res.json(mostrar)
+})
+
 app.post("/campus", async function(req, res){
     try {
     var adicionar = await campus.create(req.body);
