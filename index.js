@@ -32,8 +32,13 @@ app.get("/campus", async function(req, res){
 })
 
 app.get("/campus/:id", async function(req, res){
-    var mostrar = await campus.findByPk(req.params.id);
-    res.json(mostrar)
+    try {
+        var mostrar = await campus.findByPk(req.params.id);
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.post("/campus", async function(req, res){
@@ -47,13 +52,23 @@ app.post("/campus", async function(req, res){
 })
 
 app.put("/campus/:id", async function(req, res){
-    var atualizar = await campus.update(req.body, {where: {id:req.params.id}});
-    res.json(atualizar);
+    try {
+        var atualizar = await campus.update(req.body, {where: {id:req.params.id}});
+        res.json(atualizar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.delete("/campus/:id", async function(req, res){
-    var apagar = await campus.destroy({where: {id:req.params.id}});
-    res.json(apagar);
+    try {
+        var apagar = await campus.destroy({where: {id:req.params.id}});
+        res.json(apagar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro" + error)
+    }
 })
 
 //Curso
