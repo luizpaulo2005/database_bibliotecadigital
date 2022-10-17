@@ -169,6 +169,12 @@ app.get("/matricula/:id", async function(req, res){
     }
 })
 
+app.get("/matricula/:id/discente", async function(req, res){
+    var mostrar = await matricula.findByPk(req.params.id, {include: "discentes"})
+    res.json(mostrar)
+})
+
+
 app.post("/matricula", async function(req, res){
     try {
     var adicionar = await matricula.create(req.body);
