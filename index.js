@@ -173,8 +173,13 @@ app.get("/discente", async function(req, res){
 })
 
 app.get("/discente/:id", async function(req, res){
-    var mostrar = await discente.findByPk(req.params.id);
-    res.json(mostrar)
+    try {
+        var mostrar = await discente.findByPk(req.params.id);
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.post("/discente", async function(req, res){
@@ -188,13 +193,23 @@ app.post("/discente", async function(req, res){
 })
 
 app.put("/discente/:id", async function(req, res){
-    var atualizar = await discente.update(req.body, {where: {id:req.params.id}});
-    res.json(atualizar);
+    try {
+        var atualizar = await discente.update(req.body, {where: {id:req.params.id}});
+        res.json(atualizar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.delete("/discente/:id", async function(req, res){
-    var apagar = await discente.destroy({where: {id:req.params.id}});
-    res.json(apagar);
+    try {
+        var apagar = await discente.destroy({where: {id:req.params.id}});
+        res.json(apagar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro:" + error)
+    }
 })
 
 //Docente
