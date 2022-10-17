@@ -310,7 +310,7 @@ app.delete("/docente/:id", async function(req, res){
 //Pesquisa
 
 app.get("/pesquisa", async function(req, res){
-    var mostrar = await pesquisa.findAll();
+    var mostrar = await pesquisa.findAll({include: ['discente', 'docente']});
     res.json(mostrar);
 })
 
