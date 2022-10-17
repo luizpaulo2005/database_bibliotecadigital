@@ -169,6 +169,8 @@ app.get("/matricula/:id", async function(req, res){
     }
 })
 
+// Rotas de Relacionamento
+
 app.get("/matricula/:id/discente", async function(req, res){
     try {
         var mostrar = await matricula.findByPk(req.params.id, {include: "discentes"})
@@ -229,6 +231,28 @@ app.get("/discente", async function(req, res){
 app.get("/discente/:id", async function(req, res){
     try {
         var mostrar = await discente.findByPk(req.params.id);
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
+})
+
+// Rotas de Relacionamento
+
+app.get("/discente/:id/matricula", async function(req, res){
+    try {
+        var mostrar = await discente.findByPk(req.params.id, {include: "matricula"})
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
+})
+
+app.get("/discente/:id/pesquisas", async function(req, res){
+    try {
+        var mostrar = await discente.findByPk(req.params.id, {include: "pesquisas"})
         res.json(mostrar)
     } catch (error) {
         res.status(500)
