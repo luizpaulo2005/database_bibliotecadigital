@@ -354,6 +354,11 @@ app.get("/pesquisa/:id", async function(req, res){
     }
 })
 
+app.get("/pesquisa/:id/allattributes", async function(req, res){
+    var mostrar = await pesquisa.findByPk(req.params.id, {include: ["discente", "docente"]})
+    res.json(mostrar)
+})
+
 app.post("/pesquisa", async function(req, res){
     try {
     var adicionar = await pesquisa.create(req.body);
