@@ -170,7 +170,7 @@ app.get("/matricula/:id", async function(req, res){
 })
 
 app.get("/matricula/:id/discente", async function(req, res){
-    var mostrar = await matricula.findByPk(req.params.id, {include: "discentes"})
+    var mostrar = await matricula.findByPk(req.params.id, {include: "discente"})
     res.json(mostrar)
 })
 
