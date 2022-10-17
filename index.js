@@ -79,8 +79,13 @@ app.get("/curso", async function(req, res){
 })
 
 app.get("/curso/:id", async function(req, res){
-    var mostrar = await curso.findByPk(req.params.id)
-    res.json(mostrar);
+    try {
+        var mostrar = await curso.findByPk(req.params.id)
+        res.json(mostrar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.post("/curso", async function(req, res){
@@ -94,13 +99,23 @@ app.post("/curso", async function(req, res){
 })
 
 app.put("/curso/:id", async function(req, res){
-    var atualizar = await curso.update(req.body, {where: {id:req.params.id}});
-    res.json(atualizar);
+    try {
+        var atualizar = await curso.update(req.body, {where: {id:req.params.id}});
+        res.json(atualizar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.delete("/curso/:id", async function(req, res){
-    var apagar = await curso.destroy({where: {id:req.params.id}})
-    res.json(apagar)
+    try {
+        var apagar = await curso.destroy({where: {id:req.params.id}})
+        res.json(apagar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 //Matricula
@@ -111,8 +126,13 @@ app.get("/matricula", async function(req, res){
 })
 
 app.get("/matricula/:id", async function(req, res){
-    var mostrar = await matricula.findByPk(req.params.id);
-    res.json(mostrar)
+    try {
+        var mostrar = await matricula.findByPk(req.params.id);
+        res.json(mostrar)
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.post("/matricula", async function(req, res){
@@ -126,13 +146,23 @@ app.post("/matricula", async function(req, res){
 })
 
 app.put("/matricula/:id", async function(req, res){
-    var atualizar = await matricula.update(req.body, {where: {id:req.params.id}});
-    res.json(atualizar);
+    try {
+        var atualizar = await matricula.update(req.body, {where: {id:req.params.id}});
+        res.json(atualizar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 app.delete("/matricula/:id", async function(req, res){
-    var apagar = await matricula.destroy({where: {id:req.params.id}});
-    res.json(apagar);
+    try {
+        var apagar = await matricula.destroy({where: {id:req.params.id}});
+        res.json(apagar);
+    } catch (error) {
+        res.status(500)
+        res.json("Erro: " + error)
+    }
 })
 
 //Discente
