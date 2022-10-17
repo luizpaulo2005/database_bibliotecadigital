@@ -100,8 +100,15 @@ app.get("/curso/:id", async function(req, res){
     }
 })
 
+// Rotas de Relacionamento
+
 app.get("/curso/:id/campus", async function(req, res){
     var mostrar = await curso.findByPk(req.params.id, {include : 'campus'})
+    res.json(mostrar)
+})
+
+app.get("/curso/:id/matriculas", async function(req, res){
+    var mostrar = await curso.findByPk(req.params.id, {include: "matriculas"})
     res.json(mostrar)
 })
 
