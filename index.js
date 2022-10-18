@@ -24,7 +24,7 @@ app.get('/', async function(req, res){
     res.render('index')
 })
 
-// Rotas GET
+// Rotas GET Geral Padrão
 
 app.get('/campus', async function(req, res){
     var mostrar = await campus.findAll();
@@ -48,6 +48,39 @@ app.get('/docente', async function(req, res){
 
 app.get('/matricula', async function(req, res){
     var mostrar = await matricula.findAll();
+    res.json(mostrar);
+})
+
+app.get('/pesquisa', async function(req, res){
+    var mostrar = await pesquisa.findAll();
+    res.json(mostrar);
+})
+
+
+// Rotas GET Geral Completa
+
+app.get('/campus', async function(req, res){
+    var mostrar = await campus.findAll({ include: 'cursos'});
+    res.json(mostrar);
+})
+
+app.get('/curso', async function(req, res){
+    var mostrar = await curso.findAll({ include: ['campus', 'matriculas']});
+    res.json(mostrar);
+})
+
+app.get('/discente', async function(req, res){
+    var mostrar = await discente.findAll({ include: ['matricula', 'pesquisas']});
+    res.json(mostrar);
+})
+
+app.get('/docente', async function(req, res){
+    var mostrar = await docente.findAll({ include: 'pesquisas'});
+    res.json(mostrar);
+})
+
+app.get('/matricula', async function(req, res){
+    var mostrar = await matricula.findAll({ include: ['campus', 'discentes']});
     res.json(mostrar);
 })
 
