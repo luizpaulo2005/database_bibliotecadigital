@@ -26,32 +26,32 @@ app.get('/', async function(req, res){
 
 // Rotas GET Geral Padrão
 
-app.get('/campus', async function(req, res){
+app.get('/campus/default', async function(req, res){
     var mostrar = await campus.findAll();
     res.json(mostrar);
 })
 
-app.get('/curso', async function(req, res){
+app.get('/curso/default', async function(req, res){
     var mostrar = await curso.findAll();
     res.json(mostrar);
 })
 
-app.get('/discente', async function(req, res){
+app.get('/discente/default', async function(req, res){
     var mostrar = await discente.findAll();
     res.json(mostrar);
 })
 
-app.get('/docente', async function(req, res){
+app.get('/docente/default', async function(req, res){
     var mostrar = await docente.findAll();
     res.json(mostrar);
 })
 
-app.get('/matricula', async function(req, res){
+app.get('/matricula/default', async function(req, res){
     var mostrar = await matricula.findAll();
     res.json(mostrar);
 })
 
-app.get('/pesquisa', async function(req, res){
+app.get('/pesquisa/default', async function(req, res){
     var mostrar = await pesquisa.findAll();
     res.json(mostrar);
 })
