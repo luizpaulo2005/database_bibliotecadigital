@@ -80,7 +80,7 @@ app.get('/docente', async function(req, res){
 })
 
 app.get('/matricula', async function(req, res){
-    var mostrar = await matricula.findAll({ include: ['campus', 'discentes']});
+    var mostrar = await matricula.findAll({ include: ['curso', 'discentes']});
     res.json(mostrar);
 })
 
