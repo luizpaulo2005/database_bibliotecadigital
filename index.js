@@ -32,7 +32,7 @@ app.get('/campus', async function(req, res){
 })
 
 app.get('/curso', async function(req, res){
-    var mostrar = await curso.findAll({include: 'campus'});
+    var mostrar = await curso.findAll();
     res.json(mostrar);
 })
 
