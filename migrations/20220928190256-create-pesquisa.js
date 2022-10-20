@@ -33,7 +33,7 @@ module.exports = {
         type: Sequelize.STRING(512)
       },
       url_download: {
-        type: Sequelize.STRING
+        type: Sequelize.UUID
       },
       createdAt: {
         allowNull: false,

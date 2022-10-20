@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     data_apresentacao: DataTypes.DATEONLY,
     palavras_chave: DataTypes.STRING,
     resumo: DataTypes.STRING(512),
-    url_download: DataTypes.STRING
+    url_download: DataTypes.UUID
   }, {
     sequelize,
     modelName: 'pesquisa',
