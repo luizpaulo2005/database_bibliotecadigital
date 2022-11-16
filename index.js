@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+require('dotenv-safe').config();
 var cors = require('cors');
 const fileUpload = require('express-fileupload');
 var porta = 4000;
