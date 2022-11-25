@@ -5,6 +5,9 @@ var cors = require('cors');
 const fileUpload = require('express-fileupload');
 var porta = 4000;
 
+const swaggerUi = require('swagger-ui-express'),
+swaggerDocument = require('./swagger.json');
+
 var {campus} = require('./models');
 var {curso} = require('./models');
 var {matricula} = require('./models');
@@ -18,6 +21,12 @@ app.use(cors());
 app.use(fileUpload());
 
 app.set('view engine', 'ejs');
+
+app.use(
+    '/api-docs',
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument)
+  );
 
 // Rota '/'
 
