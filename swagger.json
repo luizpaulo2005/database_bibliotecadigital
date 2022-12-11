@@ -7,16 +7,9 @@
   },
   "host": "localhost:4000",
   "basePath": "/",
-  "schemes": [
-    "http",
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "paths": {
     "/": {
       "get": {
@@ -111,7 +104,32 @@
       "post": {
         "tags": ["Campus"],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "nome",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "cidade",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "estado",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
