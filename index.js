@@ -33,64 +33,64 @@ app.get("/", async function (req, res) {
 // Rotas GET Geral Padrão
 
 app.get("/campus/default", async function (req, res) {
-  var mostrar = await campus.findAll();
+  var mostrar = await campus.findAll({order: [["id", "DESC"]]});
   res.json(mostrar);
 });
 
 app.get("/curso/default", async function (req, res) {
-  var mostrar = await curso.findAll();
+  var mostrar = await curso.findAll({order: [["id", "DESC"]]});
   res.json(mostrar);
 });
 
 app.get("/discente/default", async function (req, res) {
-  var mostrar = await discente.findAll();
+  var mostrar = await discente.findAll({order: [["id", "DESC"]]});
   res.json(mostrar);
 });
 
 app.get("/docente/default", async function (req, res) {
-  var mostrar = await docente.findAll();
+  var mostrar = await docente.findAll({order: [["id", "DESC"]]});
   res.json(mostrar);
 });
 
 app.get("/matricula/default", async function (req, res) {
-  var mostrar = await matricula.findAll();
+  var mostrar = await matricula.findAll({order: [["id", "DESC"]]});
   res.json(mostrar);
 });
 
 app.get("/pesquisa/default", async function (req, res) {
-  var mostrar = await pesquisa.findAll();
+  var mostrar = await pesquisa.findAll({order: [["id", "DESC"]]});
   res.json(mostrar);
 });
 
 // Rotas GET Geral Completa
 
 app.get("/campus", async function (req, res) {
-  var mostrar = await campus.findAll({ include: "cursos" });
+  var mostrar = await campus.findAll({ include: "cursos", order: [["id", "DESC"]] });
   res.json(mostrar);
 });
 
 app.get("/curso", async function (req, res) {
-  var mostrar = await curso.findAll({ include: ["campus", "matriculas"] });
+  var mostrar = await curso.findAll({ include: ["campus", "matriculas"], order: [["id", "DESC"]] });
   res.json(mostrar);
 });
 
 app.get("/discente", async function (req, res) {
-  var mostrar = await discente.findAll({ include: ["matricula", "pesquisas"] });
+  var mostrar = await discente.findAll({ include: ["matricula", "pesquisas"], order: [["id", "DESC"]] });
   res.json(mostrar);
 });
 
 app.get("/docente", async function (req, res) {
-  var mostrar = await docente.findAll({ include: "pesquisas" });
+  var mostrar = await docente.findAll({ include: "pesquisas", order: [["id", "DESC"]] });
   res.json(mostrar);
 });
 
 app.get("/matricula", async function (req, res) {
-  var mostrar = await matricula.findAll({ include: ["curso", "discentes"] });
+  var mostrar = await matricula.findAll({ include: ["curso", "discentes"], order: [["id", "DESC"]] });
   res.json(mostrar);
 });
 
 app.get("/pesquisa", async function (req, res) {
-  var mostrar = await pesquisa.findAll({ include: ["discente", "docente"] });
+  var mostrar = await pesquisa.findAll({ include: ["discente", "docente"], order: [["id", "DESC"]] });
   res.json(mostrar);
 });
 

@@ -2,7 +2,7 @@ require("dotenv-safe/config");
 
 module.exports = {
     development: {
-      username: process.env.USERNAME,
+      username: process.env.DATABASE,
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
       host: process.env.HOST,
