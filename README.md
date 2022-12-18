@@ -6,7 +6,7 @@ Este é o BackEnd da Biblioteca Digital de TCCs Aprovados do IFMS
 
 1. Clonar a aplicação do GitHub;
 2. Inserir os dados do banco de dados no arquivo config.js, localizado no diretório ```config```;
-3. Abrir o terminal e executar o comando ```npm i```;
+3. Abrir o terminar e executar o comando ```npm i```;
 4. Caso seja um banco de dados local executar o comando ```npx sequelize-cli db:create```;
 5. Executar o comando ```npx sequelize-cli db:migrate```;
 6. Executar o comando ```npx sequelize-cli db:seed:all```;
