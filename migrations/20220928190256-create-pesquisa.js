@@ -15,14 +15,14 @@ module.exports = {
       tipo: {
         type: Sequelize.STRING
       },
-      discenteId: {
-        type: Sequelize.INTEGER,
-        references: {model:"discentes", key:"id"}
-      },
-      docenteId: {
-        type: Sequelize.INTEGER,
-        references: {model: "docentes", key:"id"}
-      },
+      // discenteId: {
+      //   type: Sequelize.INTEGER,
+      //   references: {model:"discentes", key:"id"}
+      // },
+      // docenteId: {
+      //   type: Sequelize.INTEGER,
+      //   references: {model: "docentes", key:"id"}
+      // },
       data_apresentacao: {
         type: Sequelize.DATEONLY
       },

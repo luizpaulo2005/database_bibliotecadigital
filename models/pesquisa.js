@@ -11,15 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.discente, {as: "discente"}),
-      this.belongsTo(models.docente, {as: "docente"})
+      // this.belongsTo(models.discente, {as: "discente"}),
+      // this.belongsTo(models.docente, {as: "docente"})
+      this.belongsToMany(models.docente, { through: "docente_as_pesquisa", as: "docentes" });
     }
   }
   pesquisa.init({
     titulo: DataTypes.STRING,
     tipo: DataTypes.STRING,
-    discenteId: DataTypes.INTEGER,
-    docenteId: DataTypes.INTEGER,
+    //discenteId: DataTypes.INTEGER,
+    //docenteId: DataTypes.INTEGER,
     data_apresentacao: DataTypes.DATEONLY,
     palavras_chave: DataTypes.STRING,
     resumo: DataTypes.STRING(512),

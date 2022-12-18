@@ -8,12 +8,12 @@ var porta = 4000;
 const swaggerUi = require("swagger-ui-express"),
   swaggerDocument = require("./swagger.json");
 
-var { campus } = require("./models");
-var { curso } = require("./models");
-var { matricula } = require("./models");
-var { discente } = require("./models");
-var { docente } = require("./models");
-var { pesquisa } = require("./models");
+var { campus, curso, matricula, discente, docente, pesquisa } = require("./models");
+// var { curso } = require("./models");
+// var { matricula } = require("./models");
+// var { discente } = require("./models");
+// var { docente } = require("./models");
+// var { pesquisa } = require("./models");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
